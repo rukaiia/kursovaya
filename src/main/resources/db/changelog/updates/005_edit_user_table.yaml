@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - changeSet:
+      id: edit user_table
+      author: Aleksei
+      changes:
+        - dropTable:
+            tableName: user_table

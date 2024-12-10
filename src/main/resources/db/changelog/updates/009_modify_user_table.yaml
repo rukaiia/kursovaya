@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: modify user table
+      author: Aleksei
+      changes:
+        - addColumn:
+            tableName: user_table
+            columns:
+              - column:
+                  name: enabled
+                  type: boolean
+                  constraints:
+                    nullable: false

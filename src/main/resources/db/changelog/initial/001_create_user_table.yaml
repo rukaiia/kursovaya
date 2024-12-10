@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: 01-create-user-table
+      author: Aleksei
+      changes:
+        - createTable:
+            tableName: user_table
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: username
+                  type: varchar(255)
+              - column:
+                  name: password
+                  type: varchar(255)

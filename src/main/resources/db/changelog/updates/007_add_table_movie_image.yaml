@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: added table for movie image
+      author: admin
+      changes:
+        - createTable:
+            tableName: movie_images
+            columns:
+              - column:
+                  name: id
+                  type: long
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: movie_id
+                  type: long
+                  constraints:
+                    foreignKeyName: mfk_movie_id
+                    nullable: false
+                    references: movie(id)
+              - column:
+                  name: file_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false

@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: edit table review
+      author: Aleksei
+      changes:
+        - addColumn:
+            tableName: review
+            columns:
+              - column:
+                  name: create_time
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false

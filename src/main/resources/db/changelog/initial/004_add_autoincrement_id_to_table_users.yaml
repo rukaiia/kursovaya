@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: add auto increment
+      author: Aleksei
+      changes:
+        - addAutoIncrement:
+            tableName: user_table
+            columnName: id
+            columnDataType: int

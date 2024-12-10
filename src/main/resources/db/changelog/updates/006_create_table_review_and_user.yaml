@@ -1,0 +1,53 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_table_review_and_user
+      author: admin
+      changes:
+        - createTable:
+            tableName: user_table
+            columns:
+              - column:
+                  name: email
+                  type: varchar(45)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    unique: true
+              - column:
+                  name: username
+                  type: varchar(45)
+              - column:
+                  name: password
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: review
+            columns:
+              - column:
+                  name: id
+                  type: long
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: rating
+                  type: int
+              - column:
+                  name: comment
+                  type: varchar(255)
+              - column:
+                  name: reviewer
+                  type: varchar(45)
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_reviewer
+                    references: user_table(email)
+              - column:
+                  name: movie_id
+                  type: long
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_movie_id
+                    references: movie(id)

@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: drop fk_movie_cast_member_movie
+      author: Aleksey
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: movie_cast_member
+            constraintName: fk_movie_cast_member_movie
+  - changeSet:
+      id: drop fk_movie_cast_member_cast_member
+      author: Aleksey
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: movie_cast_member
+            constraintName: fk_movie_cast_member_cast_member
+  - changeSet:
+      id: add new fk_movie_cast_member_movie
+      author: Aleksey
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: movie_cast_member
+            baseColumnNames: movie_id
+            constraintName: fk_movie_cast_member_movie
+            referencedTableName: movie
+            referencedColumnNames: id
+            onDelete: cascade
+            onUpdate: cascade
+  - changeSet:
+      id: add new fk_movie_cast_member_cast_member
+      author: Aleksey
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: movie_cast_member
+            baseColumnNames: cast_member_id
+            constraintName: fk_movie_cast_member_cast_member
+            referencedTableName: cast_member
+            referencedColumnNames: id
+            onDelete: cascade
+            onUpdate: cascade

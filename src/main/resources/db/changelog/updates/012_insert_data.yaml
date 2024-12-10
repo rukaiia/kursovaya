@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert users
+      author: Aleksei
+      changes:
+        - sql:
+            sql: |
+              insert into user_table(email, username, password, enabled)
+              VALUES (
+                'qwe@qwe.qwe',
+                'qwe',
+                '$2a$12$WB2YUbFcCN0tm44SBcKUjua9yiFBsfB3vW02IjuwzY7HGtlQIKzy2',
+                TRUE
+              ),
+              (
+                'ewq@ewq.com',
+                'ewq',
+                '$2a$12$WB2YUbFcCN0tm44SBcKUjua9yiFBsfB3vW02IjuwzY7HGtlQIKzy2',
+                TRUE
+              )
+  - changeSet:
+      id: insert authorities
+      author: Aleksei
+      changes:
+        - sql:
+            comment: Insert data into authority
+            sql: |
+              insert into authorities (authority)
+              values('FULL'), 
+              ('READ_ONLY');
+  - changeSet:
+      id: insert roles
+      author: Aleksei
+      changes:
+        - sql:
+            comment: Insert data into roles
+            sql: |
+              insert into roles(user_email, authority_id)
+              values ((select email from user_table where email = 'qwe@qwe.qwe'), 
+              (select id from authorities where authority = 'FULL')),
+              ((select email from user_table where email = 'ewq@ewq.com'),
+              (select id from authorities where authority = 'READ_ONLY'));

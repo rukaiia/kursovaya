@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: create roles
+      author: Aleksei
+      changes:
+        - createTable:
+            tableName: roles
+            columns:
+              - column:
+                  name: id
+                  type: long
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: authority_id
+                  type: long
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_email
+                  type: varchar(50)
+                  constraints:
+                    foreignKeyName: fk_user_email
+                    nullable: false
+                    references: user_table(email)
+              - addDefaultValue:
+                  tableName: roles
+                  columnName: authority_id
+                  columnDataType: long
+                  defaultValueNumeric: 2
+              - addForeignKeyConstraint:
+                  baseTableName: roles
+                  baseColumnNames: authority_id
+                  constraintName: fk_auth_id
+                  referencedTableName: authorities
+                  referencedColumnNames: id
+                  onUpdate: cascade
+                  onDelete: cascade

@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - includeAll:
+      path: db/changelog/initial
+  #  - include:
+  #      file: db/changelog/initial/001_create_user_table.yaml
+  #  - include:
+  #      file: db/changelog/initial/002_create_tables.yaml
+  #  - include:
+  #      file: db/changelog/initial/003_insert_movies.sql
+  - includeAll:
+      path: db/changelog/updates
